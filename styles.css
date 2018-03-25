@@ -1,0 +1,111 @@
+html {
+    padding-top: 25px;
+    background-image: url(cvety.jpg);
+    color:rgb(0, 0, 0);
+    
+}
+header {
+    font-size: 1.5em;
+    color:rgb(102, 94, 112);
+    text-align:center;    
+}
+
+body {    
+    width: 26%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #E1EDEB;  
+}
+td {
+    
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgb(60, 56, 117);
+    text-align: center;
+    font-size: 40px;   
+}
+.text-winner {
+    font-size: 32px;
+    color: whitesmoke;
+    text-align: center;    
+}
+.blockquote {
+    text-align: center;
+    margin: 0 auto;
+   
+}
+a:focus {
+	outline: none;
+}
+#panel {
+	background: #747474;
+	
+    display: none;
+    color: white;
+}
+.slide {
+	margin: 0 auto;
+	padding: 0;
+	border-top: solid 4px #c2c2c2a8;
+	background: url(images/btn-slide.gif) no-repeat center top;
+}
+.btn-slide {
+	background: url(images/white-arrow.gif) no-repeat right -50px;
+	text-align: center;
+	width: 144px;
+	height: 31px;
+	padding: 10px 10px 0 0;
+	margin: 0 auto;
+	display: none;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	color: #fff;
+	text-decoration: none;
+}
+.active {
+	background-position: right 12px;
+}
+table {
+    margin: 0 auto;
+}
+
+.accordion {	
+    border-bottom: solid 1px #c4c4c4;
+    margin-top: 10px;    
+}
+.accordion h3 {
+	background: #e9e7e7 url(images/arrow-square.gif) no-repeat right -51px;
+	padding: 7px 15px;
+	margin: 0;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	border: solid 1px #c4c4c4;
+	border-bottom: none;
+	cursor: pointer;
+}
+.accordion h3:hover {
+	background-color: #e3e2e2;
+}
+.accordion h3.active {
+	background-position: right 5px;
+}
+.accordion div  p {
+	background: #f7f7f7;
+	margin: 0;
+	padding: 5px 10px 5px;
+	border-left: solid 1px #c4c4c4;
+    border-right: solid 1px #c4c4c4;
+    padding-bottom: 5px;    
+}
+.accordion div {   
+    display: none;
+}
+#again { 
+    margin-top: 5px;
+	padding: 14px 10px;
+	display: block;	
+	width: 144px;	
+	font-weight: bold;	
+}
+.form-action em {	
+	display: none;
+}
