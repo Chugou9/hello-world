@@ -31,8 +31,9 @@ function ticTacToeClick(cell) {
         } else if (turn === 'O') {
             array[i][j] = 0;
         }
-        updateTable(cell);
         count++;
+        updateTable(cell);
+        
 
     } else {
         alert('Поле уже занято!');
@@ -46,7 +47,7 @@ function updateTable(cell) {
     turn = (turn === "X") ? "O" : "X";
 
     if (count >= 4) {
-        checkWinner(array);
+        checkConditions();
     } else return;
 }
 
@@ -58,18 +59,13 @@ function checkArray(arr, i, j) {
         return false;
 }
 
-function checkConditions(array) {
-    if (checkRows(array)){
+function checkConditions() {
+    if (checkRows() || checkColumns()
+    || checkMainDiagonal() || checkFalseDiagonal()) {
         return true;
-    } else if (checkColumns(array)) {
-        return true;
-    } else if (checkMainDiagonal(array)) {
-        return true;
-    } else if (checkFalseDiagonal(array))	{
-        return true;	
-    } else {
-        return false;    
-    }		
+    }	else if (count == 9) {
+        checkWinner();
+    }
 }
 function reload() {
     $("#panel").slideToggle("slow");
@@ -89,13 +85,17 @@ function reload() {
     instantArr();
     $("table").find("td").animate({opacity: 1}, "fast");    
 }
-function checkWinner(array) {
-    if (!checkConditions(array) && count > 7) {
-        return function() {
-            $(".text-winner").text('Ничья!');            
-            disable();
-        }();
+function checkWinner() {
+    if (checkRows() || checkColumns()
+    || checkMainDiagonal() || checkFalseDiagonal()){
+        return true;
+    } else {
+        return nowinner();
     }
+}
+function nowinner() {
+    $(".text-winner").text('Ничья!');            
+    disable();
 }
 function disable () {
     $("#panel").slideToggle("slow");
@@ -105,22 +105,21 @@ function disable () {
 }
 function checkSum(sum) {
 
-    if (sum == 3) {        
-        return function (){
+    if (sum == 3) {       
             $(".text-winner").text('Победили крестики!');
-            disable();                              
-        }();   
-    } else if (sum == 0) {
-            return function (){
+            disable();
+            return true;                              
+        
+    } else if (sum == 0) {            
                 $(".text-winner").text('Победили нолики!');                   
                 disable();
-            }();
-        } else {
+                return true;            
+    } else {
         return false;
     }
 }
 
-function checkRows(array) {
+function checkRows() {
 
     for ( let i = 0; i < array.length; i++ ) {
         let sum = 0;
@@ -132,7 +131,7 @@ function checkRows(array) {
     }
 }
 
-function checkColumns(array) {
+function checkColumns() {
 
     for ( let j = 0; j < array.length; j++ )	 {
         let sum = 0;
@@ -143,7 +142,7 @@ function checkColumns(array) {
     }
 }
 
-function checkMainDiagonal(array) {    
+function checkMainDiagonal() {    
     let sum = 0;
 
     for ( let i = 0; i < array.length; i++ ) {        
@@ -153,7 +152,7 @@ function checkMainDiagonal(array) {
     checkSum(sum);
 }
 
-function checkFalseDiagonal(array) {
+function checkFalseDiagonal() {
 
     let sum = 0;
 
@@ -189,10 +188,7 @@ $(document).ready(function () {
     });
     $("#again").click(function(){
         reload();
-    });   
-
-    
-    
+    });    
 });
 
     
